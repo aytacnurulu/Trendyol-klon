@@ -1,6 +1,6 @@
 import useLocalStorage from "../shared/hooks/useLocalStorage";
 import { createContext } from "react";
-const WishlistContext = createContext();
+export const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useLocalStorage("wishlist", []);

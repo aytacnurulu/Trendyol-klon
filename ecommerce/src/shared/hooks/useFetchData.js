@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import { getProducts, getProductById } from "../services/product.api";
 
 export default function useFetchData(apiFunction, params) {
   const [data, setData] = useState(null);

@@ -1,7 +1,7 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import useLocalStorage from "../shared/hooks/useLocalStorage";
 
-const CartContext = createContext();
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useLocalStorage("cart", []);
@@ -20,10 +20,6 @@ export const CartProvider = ({ children }) => {
     cartItems,
     addToCart,
     removeFromCart,
-  }
-  return (
-    <CartContext.Provider value={values}>
-      {children}
-    </CartContext.Provider>
-  );
+  };
+  return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
 };

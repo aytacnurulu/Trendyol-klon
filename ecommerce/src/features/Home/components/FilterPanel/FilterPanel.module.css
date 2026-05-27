@@ -1,0 +1,95 @@
+.panel {
+  padding: 1rem 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.group {
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  min-width: 220px;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.chevron {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  transition: transform 0.15s;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 4px 0;
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  list-style: none;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  background: transparent;
+}
+
+.option:hover {
+  background: var(--color-background-secondary);
+}
+
+.optionActive {
+  color: var(--color-text-info);
+  background: var(--color-background-info);
+}
+
+.optionActive:hover {
+  background: var(--color-background-info);
+}
+
+.checkIcon {
+  font-size: 16px;
+  color: var(--color-text-info);
+}
