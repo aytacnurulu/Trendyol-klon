@@ -28,33 +28,32 @@ export default function ProductCard({ product }) {
     weight,
   } = product;
 
-  const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlist();
+  const { isWishlisted, addToWishlist, removeFromWishlist } = useWishlist();
+  const wishlisted = isWishlisted(product.id);
 
   const discountedPrice = (price * (1 - discountPercentage / 100)).toFixed(2);
   const filledStars = Math.round(rating);
   const reviewCount = reviews?.length ?? 0;
   const mainImage = thumbnail || images?.[0];
 
+  const handleWishlistToggle = () => {
+    if (wishlisted) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product); // ✅ pass full product object
+    }
+  };
+
   return (
     <div className={styles.card}>
       {/* Image Area */}
       <div className={styles.imageArea}>
         <button
-          className={`${styles.wishlistBtn} ${wishlistItems.includes(product.id) ? styles.wishlistActive : ""}`}
-          aria-label="Add to wishlist"
-          onClick={() => {
-            if (wishlistItems.includes(product.id)) {
-              removeFromWishlist(product.id);
-            } else {
-              addToWishlist(product.id);
-            }
-          }}
+          className={`${styles.wishlistBtn} ${wishlisted ? styles.wishlistActive : ""}`}
+          aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
+          onClick={handleWishlistToggle}
         >
-          {wishlistItems.includes(product.id) ? (
-            <IconHeartFilled size={16} />
-          ) : (
-            <IconHeart size={16} />
-          )}
+          {wishlisted ? <IconHeartFilled size={16} /> : <IconHeart size={16} />}
         </button>
 
         <img
@@ -81,7 +80,6 @@ export default function ProductCard({ product }) {
       <div className={styles.body}>
         <h3 className={styles.title}>{title}</h3>
 
-        {/* Shipping */}
         {shippingInformation && (
           <div className={styles.shipping}>
             <IconTruck size={13} />
@@ -108,11 +106,11 @@ export default function ProductCard({ product }) {
               />
             ),
           )}
-          <span className={styles.ratingVal}>{rating.toFixed(1)}</span>
+          <span className={styles.ratingVal}>{rating?.toFixed(1)}</span>
           <span className={styles.reviewCount}>({reviewCount})</span>
         </div>
 
-        {/* Tags / Plus badge */}
+        {/* Tags */}
         {tags?.length > 0 && (
           <div className={styles.tagsRow}>
             <span className={styles.plusIcon}>+</span>
