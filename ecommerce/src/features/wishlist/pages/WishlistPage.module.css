@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap");
+
+/* ── Page Shell ─────────────────────────────────────────── */
+.page {
+  font-family: "DM Sans", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+  min-height: 80vh;
+}
+
+/* ── Hero Header ─────────────────────────────────────────── */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #fff0f3 0%, #fce8ee 60%, #fdf5e8 100%);
+  border: 1px solid #f8c8d4;
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #fca5b8 0%, transparent 70%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.heroInner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.heroIcon {
+  width: 60px;
+  height: 60px;
+  background: #e2374a;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(226, 55, 74, 0.3);
+}
+
+.heroTitle {
+  font-family: "DM Serif Display", serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #1a1a2e;
+  margin: 0 0 2px;
+  line-height: 1;
+}
+
+.heroSub {
+  font-size: 14px;
+  color: #9e6a7a;
+  margin: 0;
+  font-weight: 500;
+}
+
+.heroBadge {
+  background: #e2374a;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: "DM Serif Display", serif;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(226, 55, 74, 0.35);
+  flex-shrink: 0;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1.5px solid #f0e4e8;
+}
+
+.toolbarCount {
+  font-size: 13px;
+  font-weight: 600;
+  color: #9e6a7a;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ── Product Grid ─────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem 1.5rem;
+}
+
+.cardWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: fadeSlideUp 0.4s ease both;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.removeBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid #f8c8d4;
+  color: #c0637a;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  border-radius: 8px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+  width: 100%;
+  max-width: 240px;
+  justify-content: center;
+}
+
+.removeBtn:hover {
+  background: #fef0f2;
+  color: #e2374a;
+  border-color: #e2374a;
+}
+
+/* ── Loading Skeletons ───────────────────────────────────── */
+.stateWrap {
+  padding: 1rem 0;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem 1.5rem;
+}
+
+.skeleton {
+  background: #fff;
+  border: 1px solid #f0e4e8;
+  border-radius: 16px;
+  overflow: hidden;
+  padding-bottom: 1rem;
+}
+
+.skeletonImg {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(90deg, #fce8ee 25%, #fff0f3 50%, #fce8ee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+.skeletonLine {
+  height: 12px;
+  background: linear-gradient(90deg, #fce8ee 25%, #fff0f3 50%, #fce8ee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+  margin: 12px 14px 0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ── Error State ─────────────────────────────────────────── */
+.errorBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 3rem;
+  background: #fff5f6;
+  border: 1px solid #f8c8d4;
+  border-radius: 16px;
+  color: #c0637a;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ── Empty State ─────────────────────────────────────────── */
+.emptyWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+.emptyIllustration {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.emptyHeartBg {
+  color: #f8c8d4;
+  position: absolute;
+}
+
+.emptyHeartFg {
+  color: #e2374a;
+  position: relative;
+  z-index: 1;
+}
+
+.emptyTitle {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.emptySub {
+  font-size: 14px;
+  color: #9e6a7a;
+  max-width: 320px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.emptyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 0.5rem;
+  background: #e2374a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+  border-radius: 12px;
+  padding: 11px 24px;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+}
+
+.emptyBtn:hover {
+  background: #c42d3f;
+  transform: translateY(-1px);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero {
+    padding: 1.25rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+
+  .heroBadge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.25rem 1rem;
+  }
+}

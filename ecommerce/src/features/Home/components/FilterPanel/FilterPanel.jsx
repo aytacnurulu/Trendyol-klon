@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useProduct } from "../../../../shared/hooks/useProduct";
+import useProduct from "../../../../shared/hooks/useProduct";
 import styles from "./FilterPanel.module.css";
 
 const SORT_OPTIONS = [
@@ -13,12 +13,12 @@ const SORT_OPTIONS = [
 ];
 
 export default function FilterPanel() {
-  const { sortOption, setSortOption } = useProduct();
-
+  const { sortOption, setSortOption, sortedProducts } = useProduct();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
-  const selected = SORT_OPTIONS.find((o) => o.value === sortOption) ?? SORT_OPTIONS[0];
+  const selected =
+    SORT_OPTIONS.find((o) => o.value === sortOption) ?? SORT_OPTIONS[0];
 
   useEffect(() => {
     const handler = (e) => {
@@ -30,52 +30,55 @@ export default function FilterPanel() {
 
   return (
     <div className={styles.panel}>
-      <h2 className={styles.title}>Filters</h2>
+      <div className={styles.row}>
+        <span className={styles.count}>
+          {sortedProducts?.length ?? 0} products
+        </span>
 
-      <div className={styles.group}>
-        <label className={styles.label}>Sort by</label>
+        <div className={styles.group}>
+          <label className={styles.label}>Sort by</label>
+          <div ref={ref} className={styles.wrapper}>
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className={styles.trigger}
+              aria-haspopup="listbox"
+              aria-expanded={open}
+            >
+              <span>{selected.label}</span>
+              <i
+                className={`ti ti-chevron-down ${styles.chevron} ${open ? styles.chevronOpen : ""}`}
+                aria-hidden="true"
+              />
+            </button>
 
-        <div ref={ref} className={styles.wrapper}>
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className={styles.trigger}
-            aria-haspopup="listbox"
-            aria-expanded={open}
-          >
-            <span>{selected.label}</span>
-            <i
-              className={`ti ti-chevron-down ${styles.chevron} ${open ? styles.chevronOpen : ""}`}
-              aria-hidden="true"
-            />
-          </button>
-
-          {open && (
-            <ul role="listbox" className={styles.dropdown}>
-              {SORT_OPTIONS.map((opt) => {
-                const isActive = opt.value === sortOption;
-                return (
-                  <li
-                    key={opt.value}
-                    role="option"
-                    aria-selected={isActive}
-                    onClick={() => {
-                      setSortOption(opt.value);
-                      setOpen(false);
-                    }}
-                    className={`${styles.option} ${isActive ? styles.optionActive : ""}`}
-                  >
-                    <span>{opt.label}</span>
-                    {isActive && (
-                      <i
-                        className={`ti ti-check ${styles.checkIcon}`}
-                        aria-hidden="true"
-                      />
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
+            {open && (
+              <ul role="listbox" className={styles.dropdown}>
+                {SORT_OPTIONS.map((opt) => {
+                  const isActive = opt.value === sortOption;
+                  return (
+                    <li
+                      key={opt.value}
+                      role="option"
+                      aria-selected={isActive}
+                      onClick={() => {
+                        setSortOption(opt.value);
+                        setOpen(false);
+                      }}
+                      className={`${styles.option} ${isActive ? styles.optionActive : ""}`}
+                    >
+                      <span>{opt.label}</span>
+                      {isActive && (
+                        <i
+                          className={`ti ti-check ${styles.checkIcon}`}
+                          aria-hidden="true"
+                        />
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -40,14 +40,14 @@ export default function Header() {
             <HiOutlineSearch size={22} />
           </button>
 
-          <Link to="/account" className={styles.iconBtn} aria-label="Hesab">
+          <Link to="/account" className={styles.iconBtn} aria-label="account">
             <HiOutlineUser size={22} />
           </Link>
 
           <Link
-            to="/favorites"
+            to="/wishlist"
             className={styles.iconBtn}
-            aria-label="Sevimlilər"
+            aria-label="favorites"
           >
             <HiOutlineHeart size={22} />
             {wishlistCount > 0 && (

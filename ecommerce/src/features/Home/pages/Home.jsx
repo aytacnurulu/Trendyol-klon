@@ -5,10 +5,8 @@ import FilterPanel from "../../Home/components/FilterPanel/FilterPanel";
 export default function Home() {
   return (
     <MainLayout>
-      <h1>Welcome to our E-commerce Store!</h1>
-      {/* <FilterPanel /> */}
-
-      <p>Discover a wide range of products at unbeatable prices.</p>
+      <FilterPanel />
+      <ProductGrid />
     </MainLayout>
   );
 }

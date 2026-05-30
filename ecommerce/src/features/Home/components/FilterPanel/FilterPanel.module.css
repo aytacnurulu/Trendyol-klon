@@ -1,28 +1,39 @@
 .panel {
-  padding: 1rem 0;
+  padding: 12px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.title {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 1rem;
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.count {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 400;
 }
 
 .group {
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .label {
-  display: block;
   font-size: 13px;
-  color: var(--color-text-secondary);
-  margin-bottom: 6px;
+  color: #6b7280;
+  white-space: nowrap;
 }
 
 .wrapper {
   position: relative;
   display: inline-block;
-  min-width: 220px;
+  min-width: 200px;
 }
 
 .trigger {
@@ -32,17 +43,22 @@
   justify-content: space-between;
   gap: 8px;
   padding: 8px 12px;
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-secondary);
-  border-radius: var(--border-radius-md);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
   font-size: 14px;
-  color: var(--color-text-primary);
+  color: #111827;
   cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.trigger:hover {
+  border-color: #9ca3af;
 }
 
 .chevron {
-  font-size: 16px;
-  color: var(--color-text-secondary);
+  font-size: 15px;
+  color: #9ca3af;
   transition: transform 0.15s;
 }
 
@@ -57,9 +73,9 @@
   right: 0;
   margin: 0;
   padding: 4px 0;
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-secondary);
-  border-radius: var(--border-radius-md);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
   list-style: none;
   z-index: 100;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -72,24 +88,25 @@
   padding: 8px 12px;
   font-size: 14px;
   cursor: pointer;
-  color: var(--color-text-primary);
+  color: #111827;
   background: transparent;
+  transition: background 0.1s;
 }
 
 .option:hover {
-  background: var(--color-background-secondary);
+  background: #f9fafb;
 }
 
 .optionActive {
-  color: var(--color-text-info);
-  background: var(--color-background-info);
+  color: #2563eb;
+  background: #eff6ff;
 }
 
 .optionActive:hover {
-  background: var(--color-background-info);
+  background: #eff6ff;
 }
 
 .checkIcon {
-  font-size: 16px;
-  color: var(--color-text-info);
+  font-size: 15px;
+  color: #2563eb;
 }

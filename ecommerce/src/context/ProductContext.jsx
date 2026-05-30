@@ -24,22 +24,33 @@ export const ProductProvider = ({ children }) => {
     };
   }, [products]);
 
-  switch (sortOption) {
-    case "AtoZ":
-      products.sort((a, b) => a.name.localeCompare(b.name));
-      break;
-    case "ZtoA":
-      products.sort((a, b) => b.name.localeCompare(a.name));
-      break;
-    case "priceLowToHigh":
-      products.sort((a, b) => a.price - b.price);
-      break;
-    case "priceHighToLow":
-      products.sort((a, b) => b.price - a.price);
-      break;
-    default:
-      break;
-  }
+  const sortedProducts = useMemo(() => {
+    if (!products) return [];
+    const sorted = [...products];
+    switch (sortOption) {
+      case "price-asc":
+        sorted.sort((a, b) => a.price - b.price);
+        break;
+      case "price-desc":
+        sorted.sort((a, b) => b.price - a.price);
+        break;
+      case "name-asc":
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "name-desc":
+        sorted.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      case "newest":
+        sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        break;
+      case "oldest":
+        sorted.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        break;
+      default:
+        return products;
+    }
+    return sorted;
+  }, [products, sortOption]);
 
   const values = {
     products,
@@ -51,6 +62,7 @@ export const ProductProvider = ({ children }) => {
     filteredProductsByCategory,
     sortOption,
     setSortOption,
+    sortedProducts,
   };
   return (
     <ProductContext.Provider value={values}>{children}</ProductContext.Provider>

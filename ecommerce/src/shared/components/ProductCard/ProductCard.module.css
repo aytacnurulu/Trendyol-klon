@@ -1,0 +1,323 @@
+/* ProductCard.module.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap");
+
+/* ── Card Shell ─────────────────────────────────────────── */
+.card {
+  font-family: "Nunito", sans-serif;
+  background: #ffffff;
+  border: 0.5px solid #e5e7eb;
+  border-radius: 16px;
+  width: 240px;
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: 0 8px 28px rgba(26, 158, 130, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ── Image Area ─────────────────────────────────────────── */
+.imageArea {
+  background: #ddf0ec;
+  position: relative;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image {
+  width: 140px;
+  height: 190px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+/* ── Badges ─────────────────────────────────────────────── */
+.badgeHot {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  z-index: 2;
+}
+
+.wishlistBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffffff;
+  border: 0.5px solid #e5e7eb;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+  z-index: 2;
+}
+
+.wishlistBtn:hover {
+  color: #e2374a;
+  border-color: #e2374a;
+}
+
+/* toggled via JS classList */
+:global(.wishlistActive) {
+  color: #e2374a !important;
+  border-color: #e2374a !important;
+}
+
+/* Vertical side label */
+.sideLabel {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  background: #1a9e82;
+  color: #cff5ec;
+  font-size: 9px;
+  font-weight: 800;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 10px 5px;
+  border-radius: 10px 0 0 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* Weight / size circle */
+.weightTag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #1a9e82;
+  color: #cff5ec;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  z-index: 2;
+}
+
+.weightUnit {
+  font-size: 9px;
+  font-weight: 600;
+}
+
+/* ── Body ───────────────────────────────────────────────── */
+.body {
+  padding: 12px 14px 14px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Shipping line */
+.shipping {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 7px;
+}
+
+.shipping i {
+  font-size: 13px;
+  color: #1a9e82;
+}
+
+/* ── Stars ──────────────────────────────────────────────── */
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 7px;
+}
+
+.star {
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+.starFilled {
+  color: #fbbf24;
+}
+
+.ratingVal {
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  margin-left: 4px;
+}
+
+.reviewCount {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-left: 2px;
+}
+
+/* ── Tags Row ───────────────────────────────────────────── */
+.tagsRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.plusIcon {
+  background: #e2374a;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 4px;
+  padding: 1px 5px;
+  line-height: 1.5;
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 600;
+  color: #e2374a;
+  background: #fef2f2;
+  border: 0.5px solid #fecaca;
+  border-radius: 5px;
+  padding: 1px 6px;
+  text-transform: capitalize;
+}
+
+/* ── Price ──────────────────────────────────────────────── */
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.priceSale {
+  font-size: 19px;
+  font-weight: 800;
+  color: #e2374a;
+}
+
+.priceOriginal {
+  font-size: 12px;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.discountBadge {
+  font-size: 10px;
+  font-weight: 700;
+  background: #fef2f2;
+  color: #e2374a;
+  border-radius: 5px;
+  padding: 1px 5px;
+  border: 0.5px solid #fecaca;
+}
+
+/* ── Availability ───────────────────────────────────────── */
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.availability i {
+  font-size: 13px;
+}
+
+.inStock {
+  color: #059669;
+}
+
+.outOfStock {
+  color: #dc2626;
+}
+
+.stockCount {
+  font-weight: 400;
+  color: #6b7280;
+}
+
+/* ── Cart Button ────────────────────────────────────────── */
+.cartBtn {
+  width: 100%;
+  background: #1a9e82;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 9px 0;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: "Nunito", sans-serif;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.cartBtn:hover {
+  background: #0f6e56;
+}
+
+.cartBtn:active {
+  transform: scale(0.98);
+}
